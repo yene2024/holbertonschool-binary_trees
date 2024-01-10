@@ -3,27 +3,20 @@
 /**
  * binary_tree_is_full - checks if a binary tree is full
  * @tree: pointer to the root node of the tree to check
- * Return: 1 if tree is full, otherwise 0
+ *
+ * Return: 1 if tree is full, 0 if tree is NULL or not full
  */
 
 int binary_tree_is_full(const binary_tree_t *tree)
 {
-	int left, right;
+	int full = 0;
 
 	if (tree == NULL)
 		return (0);
 
-	if (binary_tree_nodes(tree) % 2 == 0)
-		return (0);
+	full = (tree->left && tree->right) ? 1 : 0;
+	full = (full && binary_tree_is_full(tree->left) &&
+			binary_tree_is_full(tree->right)) ? 1 : 0;
 
-	if (binary_tree_size(tree) % 2 == 0)
-		return (0);
-
-	left = binary_tree_is_full(tree->left);
-	right = binary_tree_is_full(tree->right);
-
-	if (left == 0 || right == 0)
-		return (0);
-
-	return (1);
+	return (full);
 }
