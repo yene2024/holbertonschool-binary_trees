@@ -8,13 +8,13 @@
 
 void binary_tree_delete(binary_tree_t *tree)
 {
-    if (tree == NULL)
-        return;
+	if (tree == NULL)
+		return;
 
-    /* delete left subtree */
-    binary_tree_delete(tree->left);
-    /* delete right subtree */
-    binary_tree_delete(tree->right);
-    /* delete root node */
-    free(tree);
+	/* delete left subtree */
+	binary_tree_delete(tree->left);
+	/* delete right subtree */
+	binary_tree_delete(tree->right);
+	/* delete root node */
+	free(tree);
 }
