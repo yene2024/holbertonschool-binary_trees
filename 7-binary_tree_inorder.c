@@ -6,11 +6,13 @@
  * Return: 1 if node is a root, otherwise 0
  */
 
-int binary_tree_is_root(const binary_tree_t *node)
+void binary_tree_inorder(const binary_tree_t *tree, void (*func)(int))
 {
-	if (node == NULL)
-		return (0);
-	if (node->parent)
-		return (0);
-	return (1);
+	if (tree == NULL || func == NULL)
+	{
+		return;
+	}
+	binary_tree_inorder(tree->left, func);
+	func(tree->n);
+	binary_tree_inorder(tree->right, func);
 }
